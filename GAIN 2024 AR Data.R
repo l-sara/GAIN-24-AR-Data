@@ -1127,9 +1127,9 @@ aggregated_repeat_data <- repeat_data %>%
     )
   ) %>%
   filter(!is.na(Category)) %>%
-  group_by(Example_Type, Category, X_recommendation  ) %>%  # Add _recommendation to the grouping
+  group_by(Example_Type, Category, `_recommendation`) %>%  # Add _recommendation to the grouping
   summarise(Count = n(), .groups = "drop") %>%
-  pivot_wider(names_from = c(Example_Type, X_recommendation  ), values_from = Count, values_fill = 0)
+  pivot_wider(names_from = c(Example_Type, `_recommendation`), values_from = Count, values_fill = 0)
 
 # Add Total row at the bottom
 final_data <- aggregated_repeat_data %>%
